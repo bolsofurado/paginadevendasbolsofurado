@@ -49,7 +49,11 @@ const Hero = () => {
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg">
                 Começar 30 dias grátis
               </Button>
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 rounded-full px-8 h-14 text-lg gap-2">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white rounded-full px-8 h-14 text-lg gap-2"
+              >
                 <PlayCircle className="w-5 h-5" />
                 Ver demonstração
               </Button>

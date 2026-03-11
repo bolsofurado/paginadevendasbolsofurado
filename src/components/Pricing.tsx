@@ -29,7 +29,10 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <Button variant="outline" className="w-full border-white/10 text-white hover:bg-white/5 h-12 rounded-xl">
+            <Button 
+              variant="outline" 
+              className="w-full border-purple-500/30 text-purple-500 hover:bg-purple-500/10 h-12 rounded-xl font-bold"
+            >
               Assinar agora
             </Button>
           </div>

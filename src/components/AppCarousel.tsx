@@ -15,7 +15,7 @@ const AppCarousel = () => {
     {
       title: "Dashboard Financeiro",
       description: "Visão geral completa de todas as suas contas e cartões em um só lugar.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+      image: "/src/assets/dashboard-mockup.jpg"
     },
     {
       title: "Metas de Economia",

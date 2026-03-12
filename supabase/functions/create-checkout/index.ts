@@ -54,10 +54,15 @@ serve(async (req) => {
           }
         ],
         payment_methods: {
+          default_payment_method_id: "pix", // Define PIX como primeira opção
           excluded_payment_types: [
-            { id: "ticket" } // Exclui boleto se preferir focar em PIX e Cartão
+            { id: "ticket" } // Mantém boleto excluído
           ],
           installments: planDetails.installments,
+        },
+        // Adicionando um payer genérico ajuda a evitar botões desabilitados em alguns cenários de validação do MP
+        payer: {
+          email: "cliente@bolsofurado.com.br" 
         },
         back_urls: {
           success: "https://checkout.bolsofurado.com.br/cadastro",
@@ -65,6 +70,8 @@ serve(async (req) => {
           pending: "https://bolsofurado.com.br/#planos"
         },
         auto_return: "approved",
+        statement_descriptor: "BOLSO FURADO",
+        expires: false
       }),
     })
 
@@ -76,6 +83,7 @@ serve(async (req) => {
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
     } else {
+      console.error("[create-checkout] Erro MP:", data)
       throw new Error(data.message || 'Erro ao criar preferência no Mercado Pago')
     }
 

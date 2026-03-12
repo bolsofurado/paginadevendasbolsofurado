@@ -15,6 +15,7 @@ const Navbar = () => {
           <a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a>
           <a href="#solucao" className="hover:text-white transition-colors">Solução</a>
           <a href="#planos" className="hover:text-white transition-colors">Planos</a>
+          <a href="#contato" className="hover:text-white transition-colors">Contato</a>
         </div>
 
         <div className="flex items-center gap-4">

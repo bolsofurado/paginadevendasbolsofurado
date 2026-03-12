@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, Facebook, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,16 +10,26 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <img src="/src/assets/logo.png" alt="Bolso Furado" className="h-16 w-auto mb-6" />
-            <p className="text-gray-400 max-w-sm">
+            <p className="text-gray-400 max-w-sm mb-6">
               Ajudando milhares de pessoas a conquistarem sua liberdade financeira através de tecnologia e educação.
             </p>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <Mail className="w-4 h-4 text-purple-500" />
+                <span>epicsistemas10@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <Phone className="w-4 h-4 text-purple-500" />
+                <span>65 99643-1404</span>
+              </div>
+            </div>
           </div>
           
           <div>
             <h4 className="text-white font-bold mb-6">Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Suporte</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
+              <li><a href="#contato" className="hover:text-white transition-colors">Suporte</a></li>
+              <li><a href="#contato" className="hover:text-white transition-colors">Contato</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
             </ul>

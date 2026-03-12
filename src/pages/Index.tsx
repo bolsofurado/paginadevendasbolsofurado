@@ -9,6 +9,7 @@ import FeaturesGrid from '@/components/FeaturesGrid';
 import VideoDemo from '@/components/VideoDemo';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +26,7 @@ const Index = () => {
         <VideoDemo />
         <Testimonials />
         <Pricing />
+        <Contact />
 
         {/* Final CTA Section */}
         <section className="py-24 bg-gradient-to-b from-zinc-950 to-black relative overflow-hidden">

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Instagram, Twitter, Linkedin, Facebook, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ContactDialog from './ContactDialog';
 
 const Footer = () => {
@@ -43,8 +44,8 @@ const Footer = () => {
                   } 
                 />
               </li>
-              <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
+              <li><Link to="/privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link></li>
+              <li><Link to="/termos" className="hover:text-white transition-colors">Termos de Uso</Link></li>
             </ul>
           </div>
 

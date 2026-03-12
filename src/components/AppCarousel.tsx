@@ -16,7 +16,7 @@ const AppCarousel = () => {
       title: "Dashboard Financeiro",
       description: "Visão geral completa de todas as suas contas e cartões em um só lugar.",
       image: "/src/assets/dashboard-mockup.jpg",
-      position: "object-center"
+      position: "object-top"
     },
     {
       title: "Metas de Economia",
@@ -28,7 +28,7 @@ const AppCarousel = () => {
       title: "Receitas vs Despesas",
       description: "Gráficos e listas detalhadas para entender exatamente para onde seu dinheiro vai.",
       image: "/src/assets/despesas-mockup.jpg",
-      position: "object-center"
+      position: "object-top"
     },
     {
       title: "Projeção Financeira",
@@ -59,11 +59,11 @@ const AppCarousel = () => {
                 <div className="p-2">
                   <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group">
                     <CardContent className="p-0">
-                      <div className="aspect-[4/5] overflow-hidden">
+                      <div className="aspect-[4/5] overflow-hidden bg-zinc-950">
                         <img 
                           src={slide.image} 
                           alt={slide.title} 
-                          className={`w-full h-full object-cover ${slide.position} transition-transform duration-500 group-hover:scale-110`}
+                          className={`w-full h-full object-cover ${slide.position} transition-transform duration-500 group-hover:scale-105`}
                         />
                       </div>
                       <div className="p-6">

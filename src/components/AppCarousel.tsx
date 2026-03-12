@@ -33,8 +33,8 @@ const AppCarousel = () => {
     {
       title: "Projeção Financeira",
       description: "Saiba quanto você terá no futuro com base nos seus hábitos atuais.",
-      image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800",
-      position: "object-center"
+      image: "/src/assets/projecao-mockup.jpg",
+      position: "object-top"
     },
     {
       title: "Controle de Investimentos",

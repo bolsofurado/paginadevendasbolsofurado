@@ -4,10 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, PlayCircle } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const navigate = useNavigate();
+  const handleExternalLogin = () => {
+    window.location.href = 'https://app.bolsofurado.com/';
+  };
+
   const benefits = [
     "Controle de receitas e despesas",
     "Metas de economia",
@@ -48,7 +50,7 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={() => navigate('/login')}
+                onClick={handleExternalLogin}
                 size="lg" 
                 className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg"
               >

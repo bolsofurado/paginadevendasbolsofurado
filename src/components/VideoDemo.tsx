@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Play } from 'lucide-react';
 
 const VideoDemo = () => {
+  const handleExternalLogin = () => {
+    window.location.href = 'https://app.bolsofurado.com/';
+  };
+
   return (
     <section className="py-24 bg-zinc-950 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
@@ -27,7 +31,11 @@ const VideoDemo = () => {
           </div>
 
           <div className="mt-12">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-10 h-14 text-lg">
+            <Button 
+              onClick={handleExternalLogin}
+              size="lg" 
+              className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-10 h-14 text-lg"
+            >
               Testar gratuitamente
             </Button>
           </div>

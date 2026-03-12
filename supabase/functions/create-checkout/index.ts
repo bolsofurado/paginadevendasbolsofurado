@@ -6,7 +6,6 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
-  // Handle CORS preflight request
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders })
   }
@@ -23,15 +22,14 @@ serve(async (req) => {
       )
     }
 
-    // Configuração do item baseada no plano
+    // Configuração do item baseada no plano com novos valores
     const planDetails = {
-      mensal: { title: "Plano Mensal - Bolso Furado", price: 29.00 },
-      anual: { title: "Plano Anual - Bolso Furado", price: 290.00 }
-    }[plan_type as 'mensal' | 'anual'] || { title: "Assinatura Bolso Furado", price: 29.00 }
+      mensal: { title: "Plano Mensal - Bolso Furado", price: 19.90 },
+      anual: { title: "Plano Anual - Bolso Furado", price: 199.00 }
+    }[plan_type as 'mensal' | 'anual'] || { title: "Assinatura Bolso Furado", price: 19.90 }
 
-    console.log(`[create-checkout] Criando preferência para plano: ${plan_type}`)
+    console.log(`[create-checkout] Criando preferência para plano: ${plan_type} (R$ ${planDetails.price})`)
 
-    // Chamada para a API do Mercado Pago
     const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
       method: 'POST',
       headers: {

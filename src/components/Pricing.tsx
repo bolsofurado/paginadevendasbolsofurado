@@ -12,8 +12,6 @@ const Pricing = () => {
   const handleCheckout = async (plan: string) => {
     setLoading(plan);
     try {
-      // Invocando a Edge Function para criar a preferência de pagamento
-      // Assumindo que você tenha uma função chamada 'create-checkout'
       const { data, error } = await supabase.functions.invoke('create-checkout', {
         body: { plan_type: plan }
       });
@@ -46,7 +44,7 @@ const Pricing = () => {
           <div className="p-8 bg-zinc-900 border border-zinc-800 rounded-3xl flex flex-col">
             <h3 className="text-xl font-bold text-white mb-2">Plano Mensal</h3>
             <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold text-white">R$ 29</span>
+              <span className="text-4xl font-bold text-white">R$ 19,90</span>
               <span className="text-gray-500">/mês</span>
             </div>
             <ul className="space-y-4 mb-8 flex-grow">
@@ -70,11 +68,11 @@ const Pricing = () => {
           {/* Annual Plan */}
           <div className="p-8 bg-purple-600 border border-purple-500 rounded-3xl flex flex-col relative overflow-hidden">
             <div className="absolute top-4 right-4 bg-white text-purple-600 text-xs font-bold px-3 py-1 rounded-full">
-              MAIS POPULAR
+              ECONOMIZE 2 MESES
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Plano Anual</h3>
             <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl font-bold text-white">R$ 290</span>
+              <span className="text-4xl font-bold text-white">R$ 199</span>
               <span className="text-purple-100">/ano</span>
             </div>
             <ul className="space-y-4 mb-8 flex-grow">

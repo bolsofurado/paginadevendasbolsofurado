@@ -20,7 +20,7 @@ const AppCarousel = () => {
     {
       title: "Metas de Economia",
       description: "Defina objetivos e acompanhe seu progresso para realizar seus sonhos.",
-      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=800"
+      image: "/src/assets/metas-mockup.jpg"
     },
     {
       title: "Receitas vs Despesas",

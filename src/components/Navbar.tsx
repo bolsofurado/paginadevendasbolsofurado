@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import ContactDialog from './ContactDialog';
 
 const Navbar = () => {
+  const handleStartFree = () => {
+    window.location.href = "https://checkout.bolsofurado.com.br/cadastro";
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
@@ -30,10 +34,17 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="text-white hover:bg-white/10 hidden sm:inline-flex">
+          <Button 
+            variant="ghost" 
+            className="text-white hover:bg-white/10 hidden sm:inline-flex"
+            onClick={() => window.location.href = "https://checkout.bolsofurado.com.br/login"}
+          >
             Entrar
           </Button>
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-6">
+          <Button 
+            className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-6"
+            onClick={handleStartFree}
+          >
             Começar Grátis
           </Button>
         </div>

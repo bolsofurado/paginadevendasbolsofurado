@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, PlayCircle } from 'lucide-react';
+import appMockup from '@/assets/app-mockup.jpg';
 
 const Hero = () => {
   const handleExternalLogin = () => {
@@ -77,7 +78,7 @@ const Hero = () => {
             <div className="relative z-10 mx-auto w-[280px] lg:w-[320px] aspect-[9/19] bg-zinc-900 rounded-[3rem] border-[8px] border-zinc-800 shadow-2xl overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-zinc-800 rounded-b-2xl z-20" />
               <img 
-                src="/src/assets/app-mockup.jpg" 
+                src={appMockup} 
                 alt="App Mockup" 
                 className="w-full h-full object-cover"
               />

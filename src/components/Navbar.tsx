@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import ContactDialog from './ContactDialog';
+import logo from '@/assets/logo.png';
 
 const Navbar = () => {
   const handleExternalLogin = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/src/assets/logo.png" alt="Bolso Furado" className="h-14 w-auto" />
+          <img src={logo} alt="Bolso Furado" className="h-14 w-auto" />
         </Link>
         
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">

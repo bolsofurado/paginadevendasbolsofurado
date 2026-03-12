@@ -10,36 +10,42 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Importando imagens para o Vite processar corretamente
+import dashboardImg from '@/assets/dashboard-mockup.jpg';
+import despesasImg from '@/assets/despesas-mockup.jpg';
+import projecaoImg from '@/assets/projecao-mockup.jpg';
+import investimentosImg from '@/assets/investimentos-mockup.jpg';
+
 const AppCarousel = () => {
   const slides = [
     {
       title: "Dashboard Financeiro",
       description: "Visão geral completa de todas as suas contas e cartões em um só lugar.",
-      image: "/src/assets/dashboard-mockup.jpg",
+      image: dashboardImg,
       position: "object-top"
     },
     {
       title: "Metas de Economia",
       description: "Defina objetivos e acompanhe seu progresso para realizar seus sonhos.",
-      image: "/src/assets/despesas-mockup.jpg",
+      image: despesasImg,
       position: "object-top"
     },
     {
       title: "Receitas vs Despesas",
       description: "Gráficos e listas detalhadas para entender exatamente para onde seu dinheiro vai.",
-      image: "/src/assets/despesas-mockup.jpg",
+      image: despesasImg,
       position: "object-top"
     },
     {
       title: "Projeção Financeira",
       description: "Saiba quanto você terá no futuro com base nos seus hábitos atuais.",
-      image: "/src/assets/projecao-mockup.jpg",
+      image: projecaoImg,
       position: "object-top"
     },
     {
       title: "Controle de Investimentos",
       description: "Acompanhe a rentabilidade da sua carteira de forma simplificada.",
-      image: "/src/assets/investimentos-mockup.jpg",
+      image: investimentosImg,
       position: "object-top"
     }
   ];

@@ -4,6 +4,7 @@ import React from 'react';
 import { Instagram, Twitter, Linkedin, Facebook, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ContactDialog from './ContactDialog';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
-            <img src="/src/assets/logo.png" alt="Bolso Furado" className="h-16 w-auto mb-6" />
+            <img src={logo} alt="Bolso Furado" className="h-16 w-auto mb-6" />
             <p className="text-gray-400 max-w-sm mb-6">
               Ajudando milhares de pessoas a conquistarem sua liberdade financeira através de tecnologia e educação.
             </p>

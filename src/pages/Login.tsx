@@ -6,6 +6,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import logo from '@/assets/logo.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
         className="w-full max-w-md bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl backdrop-blur-xl relative z-10"
       >
         <div className="text-center mb-8">
-          <img src="/src/assets/logo.png" alt="Bolso Furado" className="h-16 mx-auto mb-4" />
+          <img src={logo} alt="Bolso Furado" className="h-16 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-white">Bem-vindo de volta</h1>
           <p className="text-gray-400 text-sm">Entre na sua conta para gerenciar suas finanças</p>
         </div>

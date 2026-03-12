@@ -15,27 +15,32 @@ const AppCarousel = () => {
     {
       title: "Dashboard Financeiro",
       description: "Visão geral completa de todas as suas contas e cartões em um só lugar.",
-      image: "/src/assets/dashboard-mockup.jpg"
+      image: "/src/assets/dashboard-mockup.jpg",
+      position: "object-center"
     },
     {
       title: "Metas de Economia",
       description: "Defina objetivos e acompanhe seu progresso para realizar seus sonhos.",
-      image: "/src/assets/metas-mockup.jpg"
+      image: "/src/assets/despesas-mockup.jpg",
+      position: "object-top"
     },
     {
       title: "Receitas vs Despesas",
-      description: "Gráficos intuitivos para entender exatamente para onde seu dinheiro vai.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+      description: "Gráficos e listas detalhadas para entender exatamente para onde seu dinheiro vai.",
+      image: "/src/assets/despesas-mockup.jpg",
+      position: "object-center"
     },
     {
       title: "Projeção Financeira",
       description: "Saiba quanto você terá no futuro com base nos seus hábitos atuais.",
-      image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800",
+      position: "object-center"
     },
     {
       title: "Controle de Investimentos",
       description: "Acompanhe a rentabilidade da sua carteira de forma simplificada.",
-      image: "https://images.unsplash.com/photo-1611974714024-4607a5a45a40?auto=format&fit=crop&q=80&w=800"
+      image: "https://images.unsplash.com/photo-1611974714024-4607a5a45a40?auto=format&fit=crop&q=80&w=800",
+      position: "object-center"
     }
   ];
 
@@ -54,11 +59,11 @@ const AppCarousel = () => {
                 <div className="p-2">
                   <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group">
                     <CardContent className="p-0">
-                      <div className="aspect-video overflow-hidden">
+                      <div className="aspect-[4/5] overflow-hidden">
                         <img 
                           src={slide.image} 
                           alt={slide.title} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          className={`w-full h-full object-cover ${slide.position} transition-transform duration-500 group-hover:scale-110`}
                         />
                       </div>
                       <div className="p-6">

@@ -22,11 +22,19 @@ serve(async (req) => {
       )
     }
 
-    // Configuração do item baseada no plano com novos valores
+    // Configuração do item baseada no plano
     const planDetails = {
-      mensal: { title: "Plano Mensal - Bolso Furado", price: 19.90 },
-      anual: { title: "Plano Anual - Bolso Furado", price: 199.00 }
-    }[plan_type as 'mensal' | 'anual'] || { title: "Assinatura Bolso Furado", price: 19.90 }
+      mensal: { 
+        title: "Plano Mensal - Bolso Furado", 
+        price: 19.90,
+        installments: 1 
+      },
+      anual: { 
+        title: "Plano Anual - Bolso Furado", 
+        price: 199.00,
+        installments: 12 
+      }
+    }[plan_type as 'mensal' | 'anual'] || { title: "Assinatura Bolso Furado", price: 19.90, installments: 1 }
 
     console.log(`[create-checkout] Criando preferência para plano: ${plan_type} (R$ ${planDetails.price})`)
 
@@ -45,6 +53,12 @@ serve(async (req) => {
             currency_id: 'BRL'
           }
         ],
+        payment_methods: {
+          excluded_payment_types: [
+            { id: "ticket" } // Exclui boleto se preferir focar em PIX e Cartão
+          ],
+          installments: planDetails.installments,
+        },
         back_urls: {
           success: "https://checkout.bolsofurado.com.br/cadastro",
           failure: "https://bolsofurado.com.br/#planos",

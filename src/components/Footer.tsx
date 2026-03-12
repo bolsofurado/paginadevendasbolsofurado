@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Instagram, Twitter, Linkedin, Facebook, Mail, Phone } from 'lucide-react';
+import ContactDialog from './ContactDialog';
 
 const Footer = () => {
   return (
@@ -28,8 +29,20 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-6">Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#contato" className="hover:text-white transition-colors">Suporte</a></li>
-              <li><a href="#contato" className="hover:text-white transition-colors">Contato</a></li>
+              <li>
+                <ContactDialog 
+                  trigger={
+                    <button className="hover:text-white transition-colors">Suporte</button>
+                  } 
+                />
+              </li>
+              <li>
+                <ContactDialog 
+                  trigger={
+                    <button className="hover:text-white transition-colors">Contato</button>
+                  } 
+                />
+              </li>
               <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
             </ul>

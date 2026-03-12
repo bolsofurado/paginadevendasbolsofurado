@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import ContactDialog from './ContactDialog';
 
 const Navbar = () => {
   return (
@@ -15,7 +16,16 @@ const Navbar = () => {
           <a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a>
           <a href="#solucao" className="hover:text-white transition-colors">Solução</a>
           <a href="#planos" className="hover:text-white transition-colors">Planos</a>
-          <a href="#contato" className="hover:text-white transition-colors">Contato</a>
+          <ContactDialog 
+            trigger={
+              <button className="hover:text-white transition-colors">Contato</button>
+            } 
+          />
+          <ContactDialog 
+            trigger={
+              <button className="hover:text-white transition-colors">Ajuda</button>
+            } 
+          />
         </div>
 
         <div className="flex items-center gap-4">

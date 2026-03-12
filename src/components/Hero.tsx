@@ -1,11 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, PlayCircle } from 'lucide-react';
+import { CheckCircle2, PlayCircle, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { showError } from '@/utils/toast';
 
 const Hero = () => {
+  const [loading, setLoading] = useState(false);
   const benefits = [
     "Controle de receitas e despesas",
     "Metas de economia",
@@ -14,14 +17,29 @@ const Hero = () => {
     "Planejamento financeiro anual"
   ];
 
-  const handleStartFree = () => {
-    // Redireciona para o plano anual por padrão ou uma página de cadastro
-    window.location.href = "https://checkout.bolsofurado.com.br/cadastro";
+  const handleStartFree = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { plan_type: 'anual' }
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("URL de checkout não encontrada");
+      }
+    } catch (error) {
+      showError("Erro ao iniciar checkout. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden bg-black">
-      {/* Background Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/20 blur-[120px] rounded-full" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full" />
@@ -53,10 +71,11 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={handleStartFree}
+                disabled={loading}
                 size="lg" 
                 className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg"
               >
-                Começar 30 dias grátis
+                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Começar 30 dias grátis"}
               </Button>
               <Button 
                 size="lg" 
@@ -85,8 +104,6 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
-            
-            {/* Decorative elements */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/30 blur-3xl rounded-full animate-pulse" />
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/20 blur-3xl rounded-full animate-pulse" />
           </motion.div>

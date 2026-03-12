@@ -1,18 +1,36 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Check } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { showError } from '@/utils/toast';
 
 const Pricing = () => {
-  const handleCheckout = (plan: string) => {
-    // Substitua estes links pelos seus links reais do checkout (Stripe, Hotmart, etc)
-    const checkoutLinks: Record<string, string> = {
-      mensal: "https://checkout.bolsofurado.com.br/mensal",
-      anual: "https://checkout.bolsofurado.com.br/anual"
-    };
-    
-    window.location.href = checkoutLinks[plan];
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const handleCheckout = async (plan: string) => {
+    setLoading(plan);
+    try {
+      // Invocando a Edge Function para criar a preferência de pagamento
+      // Assumindo que você tenha uma função chamada 'create-checkout'
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { plan_type: plan }
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("URL de checkout não encontrada");
+      }
+    } catch (error: any) {
+      console.error("Erro ao iniciar checkout:", error);
+      showError("Não foi possível iniciar o checkout. Tente novamente.");
+    } finally {
+      setLoading(null);
+    }
   };
 
   return (
@@ -41,10 +59,11 @@ const Pricing = () => {
             </ul>
             <Button 
               onClick={() => handleCheckout('mensal')}
+              disabled={loading !== null}
               variant="outline" 
               className="w-full border-purple-500/30 text-purple-500 hover:bg-purple-500/10 h-12 rounded-xl font-bold"
             >
-              Assinar agora
+              {loading === 'mensal' ? <Loader2 className="w-4 h-4 animate-spin" /> : "Assinar agora"}
             </Button>
           </div>
 
@@ -68,9 +87,10 @@ const Pricing = () => {
             </ul>
             <Button 
               onClick={() => handleCheckout('anual')}
+              disabled={loading !== null}
               className="w-full bg-white text-purple-600 hover:bg-gray-100 h-12 rounded-xl font-bold"
             >
-              Assinar agora
+              {loading === 'anual' ? <Loader2 className="w-4 h-4 animate-spin" /> : "Assinar agora"}
             </Button>
           </div>
         </div>

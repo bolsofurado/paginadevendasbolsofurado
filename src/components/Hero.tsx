@@ -14,6 +14,11 @@ const Hero = () => {
     "Planejamento financeiro anual"
   ];
 
+  const handleStartFree = () => {
+    // Redireciona para o plano anual por padrão ou uma página de cadastro
+    window.location.href = "https://checkout.bolsofurado.com.br/cadastro";
+  };
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden bg-black">
       {/* Background Gradients */}
@@ -46,13 +51,18 @@ const Hero = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg">
+              <Button 
+                onClick={handleStartFree}
+                size="lg" 
+                className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg"
+              >
                 Começar 30 dias grátis
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
                 className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white rounded-full px-8 h-14 text-lg gap-2"
+                onClick={() => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <PlayCircle className="w-5 h-5" />
                 Ver demonstração

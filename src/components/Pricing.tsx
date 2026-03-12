@@ -5,6 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Check } from 'lucide-react';
 
 const Pricing = () => {
+  const handleCheckout = (plan: string) => {
+    // Substitua estes links pelos seus links reais do checkout (Stripe, Hotmart, etc)
+    const checkoutLinks: Record<string, string> = {
+      mensal: "https://checkout.bolsofurado.com.br/mensal",
+      anual: "https://checkout.bolsofurado.com.br/anual"
+    };
+    
+    window.location.href = checkoutLinks[plan];
+  };
+
   return (
     <section id="planos" className="py-24 bg-zinc-950">
       <div className="container mx-auto px-4">
@@ -30,6 +40,7 @@ const Pricing = () => {
               ))}
             </ul>
             <Button 
+              onClick={() => handleCheckout('mensal')}
               variant="outline" 
               className="w-full border-purple-500/30 text-purple-500 hover:bg-purple-500/10 h-12 rounded-xl font-bold"
             >
@@ -55,7 +66,10 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <Button className="w-full bg-white text-purple-600 hover:bg-gray-100 h-12 rounded-xl font-bold">
+            <Button 
+              onClick={() => handleCheckout('anual')}
+              className="w-full bg-white text-purple-600 hover:bg-gray-100 h-12 rounded-xl font-bold"
+            >
               Assinar agora
             </Button>
           </div>

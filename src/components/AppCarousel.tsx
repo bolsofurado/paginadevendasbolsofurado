@@ -39,8 +39,8 @@ const AppCarousel = () => {
     {
       title: "Controle de Investimentos",
       description: "Acompanhe a rentabilidade da sua carteira de forma simplificada.",
-      image: "https://images.unsplash.com/photo-1611974714024-4607a5a45a40?auto=format&fit=crop&q=80&w=800",
-      position: "object-center"
+      image: "/src/assets/investimentos-mockup.jpg",
+      position: "object-top"
     }
   ];
 

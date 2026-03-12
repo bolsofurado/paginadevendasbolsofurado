@@ -22,7 +22,6 @@ serve(async (req) => {
       )
     }
 
-    // Configuração do item baseada no plano
     const planDetails = {
       mensal: { 
         title: "Plano Mensal - Bolso Furado", 
@@ -36,7 +35,7 @@ serve(async (req) => {
       }
     }[plan_type as 'mensal' | 'anual'] || { title: "Assinatura Bolso Furado", price: 19.90, installments: 1 }
 
-    console.log(`[create-checkout] Criando preferência para plano: ${plan_type} (R$ ${planDetails.price})`)
+    console.log(`[create-checkout] Criando preferência para plano: ${plan_type}`)
 
     const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
       method: 'POST',
@@ -47,22 +46,22 @@ serve(async (req) => {
       body: JSON.stringify({
         items: [
           {
+            id: plan_type,
             title: planDetails.title,
             unit_price: planDetails.price,
             quantity: 1,
             currency_id: 'BRL'
           }
         ],
-        payment_methods: {
-          default_payment_method_id: "pix", // Define PIX como primeira opção
-          excluded_payment_types: [
-            { id: "ticket" } // Mantém boleto excluído
-          ],
-          installments: planDetails.installments,
-        },
-        // Adicionando um payer genérico ajuda a evitar botões desabilitados em alguns cenários de validação do MP
         payer: {
-          email: "cliente@bolsofurado.com.br" 
+          email: "contato@bolsofurado.com.br", // E-mail do recebedor como fallback para habilitar o botão
+        },
+        payment_methods: {
+          default_payment_method_id: "pix", // Força o PIX como selecionado
+          installments: planDetails.installments,
+          excluded_payment_types: [
+            { id: "ticket" } // Remove boleto
+          ]
         },
         back_urls: {
           success: "https://checkout.bolsofurado.com.br/cadastro",
@@ -71,7 +70,8 @@ serve(async (req) => {
         },
         auto_return: "approved",
         statement_descriptor: "BOLSO FURADO",
-        expires: false
+        expires: false,
+        binary_mode: true // Melhora a experiência de pagamento imediato
       }),
     })
 
@@ -84,7 +84,7 @@ serve(async (req) => {
       )
     } else {
       console.error("[create-checkout] Erro MP:", data)
-      throw new Error(data.message || 'Erro ao criar preferência no Mercado Pago')
+      throw new Error(data.message || 'Erro ao gerar checkout')
     }
 
   } catch (error: any) {

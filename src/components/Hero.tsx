@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, PlayCircle, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-import { showError } from '@/utils/toast';
+import { CheckCircle2, PlayCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const benefits = [
     "Controle de receitas e despesas",
     "Metas de economia",
@@ -16,27 +15,6 @@ const Hero = () => {
     "Ferramentas para investimentos",
     "Planejamento financeiro anual"
   ];
-
-  const handleStartFree = async () => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { plan_type: 'anual' }
-      });
-
-      if (error) throw error;
-
-      if (data?.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error("URL de checkout não encontrada");
-      }
-    } catch (error) {
-      showError("Erro ao iniciar checkout. Tente novamente.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden bg-black">
@@ -70,12 +48,11 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={handleStartFree}
-                disabled={loading}
+                onClick={() => navigate('/login')}
                 size="lg" 
                 className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 h-14 text-lg"
               >
-                {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Começar 30 dias grátis"}
+                Começar 30 dias grátis
               </Button>
               <Button 
                 size="lg" 

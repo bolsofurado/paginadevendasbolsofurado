@@ -11,11 +11,10 @@ import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
-  const handleFinalCTA = () => {
-    window.location.href = "https://checkout.bolsofurado.com.br/cadastro";
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
@@ -38,7 +37,7 @@ const Index = () => {
               Pare de perder dinheiro todo mês.
             </h2>
             <Button 
-              onClick={handleFinalCTA}
+              onClick={() => navigate('/login')}
               size="lg" 
               className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-12 h-16 text-xl font-bold shadow-2xl shadow-purple-600/20"
             >
